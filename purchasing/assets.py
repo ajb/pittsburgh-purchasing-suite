@@ -69,6 +69,8 @@ wexplorerjs = Bundle(
 conductorjs = Bundle(
     'libs/datatables/media/js/jquery.dataTables.js',
     'libs/select2/dist/js/select2.js',
+    'libs/Chart.js/Chart.js',
+    'libs/Chart.StackedBar.js/src/Chart.StackedBar.js',
     'js/shared/*.js',
     'js/conductor/*.js',
     filters='uglifyjs',
