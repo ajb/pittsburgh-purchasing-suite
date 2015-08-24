@@ -4,12 +4,12 @@
 {{ super() }}
 
 <div class="container">
-    <div class="col-lg-6">
+    <div class="col-lg-12">
         <h3>Count of contracts by days spent in given step, 2014</h3>
         <canvas id="canvas"></canvas>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-12">
         <h3>Average days spent in given step, 2014</h3>
         <canvas id="canvas2"></canvas>
     </div>
@@ -89,16 +89,14 @@ var average = {
 };
 
 var options = {
-    responsive: true,
     maintainAspectRatio: true,
     multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"
-
 };
 
 var ctx = document.getElementById("canvas").getContext("2d");
 var ctx2 = document.getElementById("canvas2").getContext("2d");
-var MyBarChart = new Chart(ctx).StackedBar(buckets, options);
-var MyOtherBarChart = new Chart(ctx2).HorizontalBar(average, options);
+var MyBarChart = new Chart(ctx).Bar(buckets, options);
+var MyOtherBarChart = new Chart(ctx2).Bar(average, options);
 
 </script>
 
