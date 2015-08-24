@@ -4,8 +4,14 @@
 {{ super() }}
 
 <div class="container">
-    <div>
+    <div class="col-lg-6">
+        <h3>Count of contracts by days spent in given step, 2014</h3>
         <canvas id="canvas"></canvas>
+    </div>
+
+    <div class="col-lg-6">
+        <h3>Average days spent in given step, 2014</h3>
+        <canvas id="canvas2"></canvas>
     </div>
 </div><!-- container -->
 
@@ -16,41 +22,83 @@
 
 <script type="text/javascript">
 
-var data = {
+/* var loadData = $.ajax({
+        type: "GET",
+        url: "https://gist.githubusercontent.com/hamhands/738aa2a2e86ac5264d48/raw/53e00cb0612f7511b6a1271ff4770629ed0fcf26/2015-08-19-tracking-metrics.csv",
+        dataType: "text/csv"
+    });
+
+var test = $.csv.toArray(loadData)*/
+
+var buckets = {
     labels: [
-        "Dept review", "Review sent to county", "Count advertises", "Advertise period",
+        "Dept review", "Review sent to county", "County advertises", "Advertise period",
         "Bids tabbed", "Tabs sent to dept", "Awardee selected", "Award sent to county",
         "County to EORC", "EORC to controller"
     ],
 
     datasets: [
         {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.5)",
-            strokeColor: "rgba(220,220,220,0.8)",
+            label: "< 7 days",
+            fillColor: "rgba(228,26,28,0.5)",
             highlightFill: "rgba(220,220,220,0.75)",
-            highlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 80, 81, 56, 55, 40]
+            //highlightStroke: "rgba(220,220,220,1)",
+            data: [53, 105, 8, 28, 72, 80, 34, 69, 24, 0, 0]
         },
         {
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.5)",
-            strokeColor: "rgba(151,187,205,0.8)",
+            label: "8 - 15 days",
+            fillColor: "rgba(55,126,184,0.5)",
             highlightFill: "rgba(151,187,205,0.75)",
-            highlightStroke: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 86, 27, 90]
+            //highlightStroke: "rgba(151,187,205,1)",
+            data: [16, 4, 12, 10, 5, 1, 17, 2, 5, 5, 0]
+        },
+        {
+            label: "16 - 30 days",
+            fillColor: "rgba(77,175,74,0.5)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            //highlightStroke: "rgba(151,187,205,1)",
+            data: [28, 5, 36, 47, 4, 2, 15, 1, 7, 29, 1]
+        },
+        {
+            label: "30+ days",
+            fillColor: "rgba(152,78,163,0.5)",
+            highlightFill: "rgba(151,187,205,0.75)",
+            //highlightStroke: "rgba(151,187,205,1)",
+            data: [28, 5, 36, 47, 4, 2, 15, 1, 7, 29, 1]
         }
+    ]
+};
+
+var average = {
+    labels: [
+        "Dept review", "Review sent to county", "County advertises", "Advertise period",
+        "Bids tabbed", "Tabs sent to dept", "Awardee selected", "Award sent to county",
+        "County to EORC", "EORC to controller"
+    ],
+
+    datasets: [
+        {
+            label: "Average days",
+            fillColor: "rgba(228,26,28,0.5)",
+            highlightFill: "rgba(220,220,220,0.75)",
+            //highlightStroke: "rgba(220,220,220,1)",
+            data: [21.5, 7.5, 24.5, 16.6, 3.4, 1.4, 18.6, 1.3, 24.7, 23.9, 81.8]
+        },
+
     ]
 };
 
 var options = {
     responsive: true,
-    maintainAspectRatio: true
+    maintainAspectRatio: true,
+    multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>"
 
 };
 
 var ctx = document.getElementById("canvas").getContext("2d");
-var MyBarChart = new Chart(ctx).StackedBar(data, options);
+var ctx2 = document.getElementById("canvas2").getContext("2d");
+var MyBarChart = new Chart(ctx).StackedBar(buckets, options);
+var MyOtherBarChart = new Chart(ctx2).HorizontalBar(average, options);
 
 </script>
 

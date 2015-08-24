@@ -10,6 +10,8 @@
     "select2": "~4.0.0",
     "moment": "~2.10.6",
     "Chart.js": "~1.0.2",
-    "Chart.StackedBar.js": "~1.0.3"
+    "Chart.StackedBar.js": "~1.0.3",
+    "jquery-csv": "*",
+    "chart.horizontalbar": "~1.0.3"
   }
 }

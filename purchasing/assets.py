@@ -71,6 +71,8 @@ conductorjs = Bundle(
     'libs/select2/dist/js/select2.js',
     'libs/Chart.js/Chart.js',
     'libs/Chart.StackedBar.js/src/Chart.StackedBar.js',
+    'libs/chart.horizontalbar/Chart.HorizontalBar.js',
+    'libs/jquery-csv/src/jquery.csv.js',
     'js/shared/*.js',
     'js/conductor/*.js',
     filters='uglifyjs',
